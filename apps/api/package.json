@@ -2,8 +2,17 @@
   "name": "@space-hunter/api",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "echo building api",
-    "lint": "echo linting api"
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint src --ext .ts",
+    "dev": "node --watch --loader ts-node/esm src/server.ts"
+  },
+  "dependencies": {
+    "@space-hunter/parser-core": "workspace:*",
+    "fastify": "^5.3.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
   }
 }
