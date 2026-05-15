@@ -3,9 +3,23 @@ import tseslint from 'typescript-eslint'
 
 export default [
   js.configs.recommended,
-  ...tseslint.configs.recommended,
   {
-    files: ['**/*.{ts,tsx,js,jsx,mjs,cjs}'],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      parser: tseslint.parser,
+      ecmaVersion: 2022,
+      sourceType: 'module'
+    },
+    plugins: {
+      '@typescript-eslint': tseslint.plugin
+    },
+    rules: {
+      ...tseslint.configs.recommended.rules,
+      'no-console': 'off'
+    }
+  },
+  {
+    files: ['**/*.{js,jsx,mjs,cjs}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module'
