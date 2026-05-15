@@ -1,20 +1,21 @@
 import js from '@eslint/js'
-import tseslint from 'typescript-eslint'
+import tsParser from '@typescript-eslint/parser'
+import tsPlugin from '@typescript-eslint/eslint-plugin'
 
 export default [
   js.configs.recommended,
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
-      parser: tseslint.parser,
+      parser: tsParser,
       ecmaVersion: 2022,
       sourceType: 'module'
     },
     plugins: {
-      '@typescript-eslint': tseslint.plugin
+      '@typescript-eslint': tsPlugin
     },
     rules: {
-      ...tseslint.configs.recommended.rules,
+      ...tsPlugin.configs.recommended.rules,
       'no-console': 'off'
     }
   },
